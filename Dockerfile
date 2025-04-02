@@ -1,11 +1,13 @@
-FROM ubuntu
+FROM ubuntu:20.04
 
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt update
-
-
+RUN apt-get update
+RUN apt-get  install -y --no-install-recommends software-properties-common 
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update
+RUN apt-get  install -y --no-install-recommends  python3.10 python3.10-venv python3.10-dev
 # get and install building tools
 RUN \
         apt-get update && \
@@ -15,8 +17,6 @@ RUN \
         ninja-build \
         nasm \
         doxygen \
-        python3 \
-        python3-dev \
         python3-pip \
         python3-setuptools \
         python3-wheel \

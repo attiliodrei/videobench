@@ -5,17 +5,19 @@ import json
 import operator
 import sys
 
-from PySide2 import QtGui, QtWidgets, QtCore     ############# If you are not using the GUI , you can remove this block of import
-from PySide2.QtCore import QPoint, Qt
-from PySide2.QtGui import QPainter
-from PySide2.QtWidgets import QMainWindow, QApplication
-from PySide2.QtCharts import QtCharts
+from PySide6 import QtGui, QtWidgets, QtCore     ############# If you are not using the GUI , you can remove this block of import
+from PySide6.QtCore import QPoint, Qt
+from PySide6.QtGui import QPainter
+from PySide6.QtWidgets import QMainWindow, QApplication
+from PySide6.QtCharts import QChart, QChartView, QLineSeries, QBarSeries
+
 import multiprocessing
 
 
-container_tmp_path ="/home/shared-vmaf/"
+container_tmp_path ="/home/videobench/"
 tmp_path = "/tmp/videobench/"
-docker_cmd = "docker container run --rm  -v {}:{} docker-videobench".format(tmp_path, container_tmp_path)
+docker_cmd = "docker container run --rm  -v {}:{} videobench ".format(tmp_path, container_tmp_path)
+#docker_cmd = "".format(tmp_path, container_tmp_path)
 
 class videoFileInfos(object):
 	def __init__(self,
@@ -122,21 +124,21 @@ class videoFileInfos(object):
 
 
 	def get_lineSeries_vmaf(self):
-		lineSeries = QtCharts.QLineSeries()
+		lineSeries = QtChart.QLineSeries()
 		for i in range (0,len(self.vmaf)):
 			lineSeries.append(QPoint(i, self.vmaf[i]))
 		lineSeries.setName(self.filename)
 		return lineSeries
 
 	def get_lineSeries_psnr(self):
-		lineSeries = QtCharts.QLineSeries()
+		lineSeries = QtChart.QLineSeries()
 		for i in range (0,len(self.psnr)):
 			lineSeries.append(QPoint(i, self.psnr[i]))
 		lineSeries.setName(self.filename)
 		return lineSeries
 
 	def get_lineSeries_bitrate_frame(self):
-		lineSeries = QtCharts.QLineSeries()
+		lineSeries = QLineSeries()
 		mbps_frames = self.get_mbps_frames()
 		for i in range (0,len(self.get_mbps_frames())):
 			lineSeries.append(QPoint(i, mbps_frames[i]))
@@ -144,7 +146,7 @@ class videoFileInfos(object):
 		return lineSeries
 
 	def get_lineSeries_vmaf_s(self):
-		lineSeries_vmaf = QtCharts.QLineSeries()
+		lineSeries_vmaf = QLineSeries()
 		vmafs = self.get_vmafs()
 		for i in range (0,len(self.get_vmafs())):
 			lineSeries_vmaf.append(QPoint(i, vmafs[i]))
@@ -152,7 +154,7 @@ class videoFileInfos(object):
 		return lineSeries_vmaf
 
 	def get_lineSeries_psnr_s(self):
-		lineSeries_psnr = QtCharts.QLineSeries()
+		lineSeries_psnr = QLineSeries()
 		psnrs = self.get_psnrs()
 		for i in range (0,len(self.get_psnrs())):
 			lineSeries_psnr.append(QPoint(i, psnrs[i]))
@@ -160,7 +162,7 @@ class videoFileInfos(object):
 		return lineSeries_psnr
 
 	def get_lineSeries_bitrate_s(self):
-		lineSeries_bitrate = QtCharts.QLineSeries()
+		lineSeries_bitrate = QLineSeries()
 		mbps = self.get_mbps()
 		for i in range (0,len(self.get_mbps())):
 			lineSeries_bitrate.append(QPoint(i, mbps[i]))

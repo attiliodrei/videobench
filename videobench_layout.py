@@ -1,8 +1,9 @@
-from PySide2 import QtGui, QtWidgets, QtCore
+
+from PySide6 import QtGui, QtWidgets, QtCore
 from functools import partial
-from PySide2.QtCharts import QtCharts
-from PySide2.QtCore import QPoint, Qt
-from PySide2.QtGui import QPainter
+from PySide6.QtCharts import QChart, QChartView, QLineSeries
+from PySide6.QtCore import QPoint, Qt
+from PySide6.QtGui import QPainter
 
 class Ui_fenetrePrincipale(object):
     def setupUi(self, mainWindow):
@@ -266,15 +267,15 @@ class Ui_fenetrePrincipale(object):
         self.chartVSplitter.setOrientation(QtCore.Qt.Vertical) 
 
         self.chart_vmaf = self.create_chart("VMAF")
-        self.chartView_vmaf = QtCharts.QChartView(self.chart_vmaf)
+        self.chartView_vmaf = QChartView(self.chart_vmaf)
         self.chartView_vmaf.setRenderHint(QPainter.Antialiasing)    
 
         self.chart_psnr = self.create_chart("PSNR")
-        self.chartView_psnr = QtCharts.QChartView(self.chart_psnr)
+        self.chartView_psnr = QChartView(self.chart_psnr)
         self.chartView_psnr.setRenderHint(QPainter.Antialiasing)    
 
         self.chart_bitrate = self.create_chart("Bitrate Kbps")
-        self.chartView_bitrate = QtCharts.QChartView(self.chart_bitrate)
+        self.chartView_bitrate = QChartView(self.chart_bitrate)
         self.chartView_bitrate.setRenderHint(QPainter.Antialiasing)
 
         self.radio_time = QtWidgets.QRadioButton("Seconds")
@@ -285,25 +286,25 @@ class Ui_fenetrePrincipale(object):
         self.barVSplitter.setOrientation(QtCore.Qt.Vertical) 
 
         self.barChart_vmaf = self.create_chart("VMAF")
-        self.barChartView_vmaf = QtCharts.QChartView(self.barChart_vmaf)
+        self.barChartView_vmaf = QChartView(self.barChart_vmaf)
         self.barChartView_vmaf.setRenderHint(QPainter.Antialiasing) 
 
         self.barChart_psnr = self.create_chart("PSNR")
-        self.barChartView_psnr = QtCharts.QChartView(self.barChart_psnr)
+        self.barChartView_psnr = QChartView(self.barChart_psnr)
         self.barChartView_psnr.setRenderHint(QPainter.Antialiasing) 
 
         self.barChart_bitrate = self.create_chart("Bitrate Kbps")
-        self.barChartView_bitrate = QtCharts.QChartView(self.barChart_bitrate)
+        self.barChartView_bitrate = QChartView(self.barChart_bitrate)
         self.barChartView_bitrate.setRenderHint(QPainter.Antialiasing)
 
     def create_chart(self, title): 
-        chart = QtCharts.QChart()
+        chart = QChart()
         chart.setTitle(title)
         chart.setMinimumSize(0.25*self.size.width() , 0.25*self.size.height())
         chart.legend().setVisible(True)
         chart.legend().setAlignment(Qt.AlignBottom)
-        chart.setAnimationOptions(QtCharts.QChart.AllAnimations)
-        #chart.setTheme(QtCharts.QChart.ChartThemeLight)
+        chart.setAnimationOptions(QChart.AllAnimations)
+        #chart.setTheme(QChart.ChartThemeLight)
         return chart
 
     def add_inputs_layout(self):

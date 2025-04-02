@@ -8,10 +8,10 @@ from subprocess import Popen, PIPE
 import subprocess
 from functools import partial
 from datetime import datetime
-from PySide2 import QtGui, QtWidgets, QtCore
-from PySide2.QtCore import QPoint, Qt, QProcess
-from PySide2.QtWidgets import QMainWindow, QApplication
-from PySide2.QtCharts import QtCharts
+from PySide6 import QtGui, QtWidgets, QtCore
+from PySide6.QtCore import QPoint, Qt, QProcess
+from PySide6.QtWidgets import QMainWindow, QApplication
+from PySide6.QtCharts import QChart, QChartView, QLineSeries, QBarSeries
 from videobench_layout import Ui_fenetrePrincipale
 from videobench_functions import videoFileInfos
 import copy
@@ -433,27 +433,27 @@ class VideoAnalyzer(QtWidgets.QWidget, Ui_fenetrePrincipale):
 		self.psnrbs_dict = {}
 		self.bitratebs_dict = {}
 
-		self.vmaf_barSeries = QtCharts.QBarSeries()
-		self.psnr_barSeries = QtCharts.QBarSeries()
-		self.bitrate_barSeries = QtCharts.QBarSeries()
+		self.vmaf_barSeries = QBarSeries()
+		self.psnr_barSeries = QBarSeries()
+		self.bitrate_barSeries = QBarSeries()
 
 		for obj in self.list_obj:
 
 
 			try:
-				self.vmafbs_dict[obj.filename] = QtCharts.QBarSet(obj.filename)
+				self.vmafbs_dict[obj.filename] = QBarSet(obj.filename)
 				self.vmafbs_dict[obj.filename].append([obj.vmaf_avg])
 			except:
 				pass
 			
 			try:
-				self.psnrbs_dict[obj.filename] = QtCharts.QBarSet(obj.filename)
+				self.psnrbs_dict[obj.filename] = QBarSet(obj.filename)
 				self.psnrbs_dict[obj.filename].append([obj.psnr_avg])
 			except:
 				pass
 			
 			try:
-				self.bitratebs_dict[obj.filename] = QtCharts.QBarSet(obj.filename)
+				self.bitratebs_dict[obj.filename] = QBarSet(obj.filename)
 				self.bitratebs_dict[obj.filename].append([obj.bitrate_avg])
 			except:
 				pass

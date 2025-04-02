@@ -268,7 +268,7 @@ if __name__ == '__main__':
 		print(" VMAF MIN : {0}".format(input_obj.vmaf_min),flush=True)
 
 		######## tests files json output #####
-		f = open("{0}/{1}.json".format(input_obj.path, input_obj.name),'w')
+		f = open("{0}/tmp/videobench/{1}.json".format(input_obj.path, input_obj.name),'w')
 		f.write(output_json)
 		f.close()
 	print("* Done!",flush=True)
@@ -276,7 +276,7 @@ if __name__ == '__main__':
 	if ref_file:
 		######## ref json output #####
 		output_json = json.dumps(ref_obj.__dict__, sort_keys=True, indent=4)
-		f = open("{0}/{1}.json".format(ref_obj.path, ref_obj.name),'w')
+		f = open("{0}/tmp/videobench/{1}.json".format(ref_obj.path, ref_obj.name),'w')
 		f.write(output_json)
 		f.close()
 
