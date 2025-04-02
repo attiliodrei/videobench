@@ -11,7 +11,11 @@ from datetime import datetime
 from PySide6 import QtGui, QtWidgets, QtCore
 from PySide6.QtCore import QPoint, Qt, QProcess
 from PySide6.QtWidgets import QMainWindow, QApplication
-from PySide6.QtCharts import QChart, QChartView, QLineSeries, QBarSeries
+from PySide6.QtCharts import *
+from PySide6 import QtGui, QtWidgets, QtCore
+from functools import partial
+
+
 from videobench_layout import Ui_fenetrePrincipale
 from videobench_functions import videoFileInfos
 import copy
@@ -40,7 +44,7 @@ class VideoAnalyzer(QtWidgets.QWidget, Ui_fenetrePrincipale):
 	def Init_values(self):
 		self.currentPath = os.path.dirname(__file__)
 		self.python_path = "python3"
-		self.videoAnalyzerPath = os.path.dirname(os.path.abspath(__file__)) + "/videobench.py"
+		self.videoAnalyzerPath = os.path.dirname(os.path.abspath(__file__)) + "/videobench1.py"
 		self.list_obj=[]
 		self.jsonFilesNames = []
 		self.refCheckbox_dict = {}

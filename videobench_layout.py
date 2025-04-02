@@ -1,7 +1,6 @@
-
 from PySide6 import QtGui, QtWidgets, QtCore
 from functools import partial
-from PySide6.QtCharts import QChart, QChartView, QLineSeries
+from PySide6.QtCharts import *
 from PySide6.QtCore import QPoint, Qt
 from PySide6.QtGui import QPainter
 
@@ -304,7 +303,7 @@ class Ui_fenetrePrincipale(object):
         chart.legend().setVisible(True)
         chart.legend().setAlignment(Qt.AlignBottom)
         chart.setAnimationOptions(QChart.AllAnimations)
-        #chart.setTheme(QChart.ChartThemeLight)
+        #chart.setTheme(QtCharts.QChart.ChartThemeLight)
         return chart
 
     def add_inputs_layout(self):
