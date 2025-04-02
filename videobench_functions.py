@@ -9,15 +9,13 @@ from PySide6 import QtGui, QtWidgets, QtCore     ############# If you are not us
 from PySide6.QtCore import QPoint, Qt
 from PySide6.QtGui import QPainter
 from PySide6.QtWidgets import QMainWindow, QApplication
-from PySide6.QtCharts import QChart, QChartView, QLineSeries, QBarSeries
-
+from PySide6.QtCharts import *
 import multiprocessing
 
 
-container_tmp_path ="/home/videobench/"
+container_tmp_path ="/home/shared-vmaf/"
 tmp_path = "/tmp/videobench/"
-docker_cmd = "docker container run --rm  -v {}:{} videobench ".format(tmp_path, container_tmp_path)
-#docker_cmd = "".format(tmp_path, container_tmp_path)
+docker_cmd = "docker container run --rm  -v {}:{} registry.hiway.media/videobench".format(tmp_path, container_tmp_path)
 
 class videoFileInfos(object):
 	def __init__(self,
@@ -124,14 +122,14 @@ class videoFileInfos(object):
 
 
 	def get_lineSeries_vmaf(self):
-		lineSeries = QtChart.QLineSeries()
+		lineSeries = QtCharts.QLineSeries()
 		for i in range (0,len(self.vmaf)):
 			lineSeries.append(QPoint(i, self.vmaf[i]))
 		lineSeries.setName(self.filename)
 		return lineSeries
 
 	def get_lineSeries_psnr(self):
-		lineSeries = QtChart.QLineSeries()
+		lineSeries = QtCharts.QLineSeries()
 		for i in range (0,len(self.psnr)):
 			lineSeries.append(QPoint(i, self.psnr[i]))
 		lineSeries.setName(self.filename)
