@@ -68,7 +68,7 @@ brew install python3
 
 ```
 brew install python3-pip
-pip3 install pyside2
+pip3 install pyside6
 ```
 
 ### Install prerequisites on Windows 
