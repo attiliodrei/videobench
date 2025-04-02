@@ -129,7 +129,7 @@ For more information read the article on [VideoBench](https://jnduquesne.medium.
 
 example :
 ```
-python3 videobench.py -ref ref_files.mp4 -i test_file1.mp4 test_file2.mp4 test_file2.mp4 -sync -0.1 -sw 0.2 
+python3 videobench.py -ref  test22_federmoto.mp4 -i test23_federmoto.mp4 test24_federmoto.mp4 -sync -0.1 -sw 0.2 
 ```
 
 help :
