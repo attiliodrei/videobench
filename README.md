@@ -49,7 +49,7 @@ sudo apt-get install python3
 
 ```
 sudo apt-get install python3-pip
-pip3 install pyside2
+pip3 install pyside6
 ```
 
 ### Install prerequisites on Mac OS 
@@ -87,7 +87,7 @@ Don't forget to click on "add python to PATH"
 #### Install pyside2
 
 ```
-pip install pyside2
+pip install pyside6
 ```
 
 ### Create docker container
